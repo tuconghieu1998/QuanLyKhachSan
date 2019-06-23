@@ -75,8 +75,9 @@ namespace QuanLyKhachSan.DAO
                 query = string.Format("exec pro_LoadDSKhachThuePhong '{0}'", idPhong);
                 dt = DataProvider.Instance.ExcuteQuery(query);
                 phongDetail.IdPhieuThue = int.Parse(dt.Rows[0]["idPhieuThue"].ToString());
-                phongDetail.NgayThue = dt.Rows[0]["NgayThue"].ToString();
-                
+                DateTime date = (DateTime)dt.Rows[0]["NgayThue"];
+                phongDetail.NgayThue = date.ToString("dd/MM/yyyy HH:mm");
+
                 foreach (DataRow item in dt.Rows)
                 {
                     Dictionary dsKhachThue = new Dictionary();
@@ -143,6 +144,18 @@ namespace QuanLyKhachSan.DAO
             string query = string.Format("exec pro_getTenLoaiPhong '{0}'", id);
             return DataProvider.Instance.ExcuteScalarString(query);
             
+        }
+
+        public static int setTinhTrangPhong(int idPhong, int tinhTrang)
+        {
+            string query = string.Format("exec pro_setTinhTrangPhong '{0}', '{1}'", idPhong, tinhTrang);
+            return DataProvider.Instance.ExcuteNonQuery(query);
+        }
+
+        public static int getSoLuongKhachToiDa(int idPhong)
+        {
+            string query = string.Format("exec pro_getSLKhachToiDa '{0}'", idPhong);
+            return DataProvider.Instance.ExcuteScalarInt(query);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyKhachSan.DTO;
 using QuanLyKhachSan.UC;
 
 namespace QuanLyKhachSan
@@ -26,6 +27,9 @@ namespace QuanLyKhachSan
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            GlobalVar.listChiTietHD = new List<ChiTietHoaDon>();
+            GlobalVar.tmp = new List<ChiTietHoaDon>();
             //this.TopMost = true;
             //this.WindowState = FormWindowState.Maximized;
         }

@@ -1,5 +1,6 @@
 ﻿using QuanLyKhachSan.DAO;
 using QuanLyKhachSan.DTO;
+using QuanLyKhachSan.UC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,6 +48,7 @@ namespace QuanLyKhachSan.UI
                 }
                 PhongDAO.ThemPhong(tenPhong, loaiPhong, ghiChu);
                 MessageBox.Show("Thêm phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ucQuanLyPhong.success = true;
                 this.Close();
             }
             else
@@ -59,6 +61,7 @@ namespace QuanLyKhachSan.UI
                 }
                 PhongDAO.SuaPhong(idPhong, tenPhong, loaiPhong, ghiChu);
                 MessageBox.Show("Sửa thông tin phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ucQuanLyPhong.success = true;
                 this.Close();
             }
         }

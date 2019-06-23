@@ -21,6 +21,7 @@ namespace QuanLyKhachSan.UC
         }
 
         public static int idPhong;
+        public static bool success = false;
 
         void setUpCMBLoaiPhong()
         {
@@ -60,8 +61,13 @@ namespace QuanLyKhachSan.UC
             FormThemPhong.luaChon = "them";
             FormThemPhong form = new FormThemPhong();
             form.ShowDialog();
-            LoadDSPhong();
-            DatLai();
+            if (success)
+            {
+                success = false;
+                LoadDSPhong();
+                DatLai();
+            }
+            
         }
 
         void HienThiDanhSachPhong(List<Phong> listPhong)
@@ -128,7 +134,7 @@ namespace QuanLyKhachSan.UC
             else
             {
                 txtTinhTrang.Text = "Đã thuê";
-                txtNgayThue.Text = phongDetail.NgayThue;            
+                txtNgayThue.Text = phongDetail.NgayThue;
             }
             txtGhiChu.Text = phongDetail.GhiChu;
             dtgDSKhachThue.DataSource = phongDetail.DsKhachThue;
@@ -148,8 +154,20 @@ namespace QuanLyKhachSan.UC
                 MessageBox.Show("Bạn chưa chọn phòng\nHãy chọn 1 phòng bất kỳ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (txtTinhTrang.Text == "Đã thuê")
+            {
+                MessageBox.Show("Phòng đã được thuê!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FormThuePhong.idPhong = idPhong;
             FormThuePhong form = new FormThuePhong();
             form.ShowDialog();
+            if (success)
+            {
+                success = false;
+                LoadDSPhong();
+                DatLai();
+            }
         }
 
         private void btnSuaPhong_Click(object sender, EventArgs e)
@@ -163,8 +181,12 @@ namespace QuanLyKhachSan.UC
             FormThemPhong.luaChon = "sua";
             FormThemPhong form = new FormThemPhong();
             form.ShowDialog();
-            LoadDSPhong();
-            DatLai();
+            if (success)
+            {
+                success = false;
+                LoadDSPhong();
+                DatLai();
+            }
         }
 
         private void btnXoaPhong_Click(object sender, EventArgs e)
@@ -192,6 +214,91 @@ namespace QuanLyKhachSan.UC
             txtNgayThue.Text = "";
             txtGhiChu.Text = "";
             dtgDSKhachThue.DataSource = phongDetail.DsKhachThue;
+        }
+
+        private void btnTraPhong_Click(object sender, EventArgs e)
+        {
+            if (lblTenPhong.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn phòng\nHãy chọn 1 phòng bất kỳ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtTinhTrang.Text != "Đã thuê")
+            {
+                MessageBox.Show("Phòng trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DialogResult res1 = MessageBox.Show("Trả phòng " + lblTenPhong.Text + "?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res1 == DialogResult.No)
+            {
+                return;
+            }
+            DialogResult res = MessageBox.Show("Bạn có muốn thêm vào hóa đơn " + lblTenPhong.Text + " không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                //từ id phòng lấy được id_phiếu thuê nhờ xét tình trạng phòng là 0: Đang thuê
+                int idPhieuThue = PhieuThueDAO.LayPhieuThueHienTaiCuaPhong(idPhong);
+                //cập nhập lại tình trạng phòng là 0:trống, tình trạng phiếu thuê là 1: chưa thanh toán, set ngày kết thúc 
+                PhongDAO.setTinhTrangPhong(idPhong, 0);
+                string ngayKetThuc = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
+                PhieuThueDAO.CapNhapPhieuThueKhiTraPhong(idPhieuThue, ngayKetThuc);
+
+
+                addListChiTietHDByIDPhieuThue(idPhieuThue);
+                
+
+            }
+            else
+            {
+                //từ id phòng lấy được id_phiếu thuê nhờ xét tình trạng phòng là 0: Đang thuê
+                int idPhieuThue = PhieuThueDAO.LayPhieuThueHienTaiCuaPhong(idPhong);
+                //cập nhập lại tình trạng phòng là 0:trống, tình trạng phiếu thuê là 1: chưa thanh toán, set ngày kết thúc 
+                PhongDAO.setTinhTrangPhong(idPhong, 0);
+                string ngayKetThuc = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
+                PhieuThueDAO.CapNhapPhieuThueKhiTraPhong(idPhieuThue, ngayKetThuc);
+
+                MessageBox.Show("Trả phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        void addListChiTietHDByIDPhieuThue(int idPhieuThue)
+        {
+            DataTable dt = PhieuThueDAO.LayDuLieuThuePhong(idPhieuThue);
+            if (dt.Rows.Count <= 0)
+            {
+                return;
+            }
+            DuLieuThuePhong duLieu = new DuLieuThuePhong(dt.Rows[0]);
+            //Chỉ cần một loại khách nước ngoài thì sẽ phụ thu thêm 1.5
+            duLieu.PhuThuLoaiKhach = PhieuThueDAO.LayPhuThuLoaiKhachCaoNhatTheoPhieuThue(idPhieuThue);
+            //Mã phiếu thuê, Tên phòng, số ngày, đơn giá, phụ thu, tiền
+            ChiTietHoaDon chiTiet = new ChiTietHoaDon();
+            chiTiet.MaPhieuThue = duLieu.MaPhieuThue;
+            chiTiet.TenPhong = duLieu.TenPhong;
+
+            TimeSpan totaldays = duLieu.NgayKetThuc.Subtract(duLieu.NgayThue);
+            chiTiet.SoNgay = (int)Math.Ceiling(totaldays.TotalDays);
+            chiTiet.DonGia = duLieu.DonGia;
+
+            //nếu số lượng khách vượt quá mức quy định thì sẽ phụ thu thêm
+            if (duLieu.Sl_Khach > duLieu.Sl_KhachBinhThuong)
+            {
+                chiTiet.Tien = chiTiet.DonGia * chiTiet.SoNgay * duLieu.PhuThuLoaiPhong * duLieu.PhuThuLoaiKhach;
+            }
+            else
+            {
+                chiTiet.Tien = chiTiet.DonGia * chiTiet.SoNgay * duLieu.PhuThuLoaiPhong * duLieu.PhuThuLoaiKhach;
+            }
+            chiTiet.PhuThu = chiTiet.Tien - chiTiet.DonGia * chiTiet.SoNgay;
+            //chiTiet.SoNgay = PhieuThueDAO.LaySoNgayThuePhong(idPhieuThue);
+            //add vào list danh sách chi tiết hóa đơn
+            GlobalVar.listChiTietHD.Add(chiTiet);
+
+            //cập nhập lại tổng tiền
+            GlobalVar.TongTien += chiTiet.Tien;
+
+            MessageBox.Show("Thêm vào hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

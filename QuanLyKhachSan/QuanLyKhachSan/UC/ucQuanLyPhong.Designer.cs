@@ -36,7 +36,7 @@
             this.txtNgayThue = new System.Windows.Forms.TextBox();
             this.btnXoaPhong = new System.Windows.Forms.Button();
             this.btnThuePhong = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnTraPhong = new System.Windows.Forms.Button();
             this.btnSuaPhong = new System.Windows.Forms.Button();
             this.dtgDSKhachThue = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +69,7 @@
             this.panel1.Controls.Add(this.txtNgayThue);
             this.panel1.Controls.Add(this.btnXoaPhong);
             this.panel1.Controls.Add(this.btnThuePhong);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnTraPhong);
             this.panel1.Controls.Add(this.btnSuaPhong);
             this.panel1.Controls.Add(this.dtgDSKhachThue);
             this.panel1.Controls.Add(this.label5);
@@ -149,16 +149,17 @@
             this.btnThuePhong.UseVisualStyleBackColor = false;
             this.btnThuePhong.Click += new System.EventHandler(this.btnThuePhong_Click);
             // 
-            // button4
+            // btnTraPhong
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(135, 453);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(129, 35);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Trả phòng";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnTraPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnTraPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraPhong.Location = new System.Drawing.Point(135, 453);
+            this.btnTraPhong.Name = "btnTraPhong";
+            this.btnTraPhong.Size = new System.Drawing.Size(129, 35);
+            this.btnTraPhong.TabIndex = 8;
+            this.btnTraPhong.Text = "Trả phòng";
+            this.btnTraPhong.UseVisualStyleBackColor = false;
+            this.btnTraPhong.Click += new System.EventHandler(this.btnTraPhong_Click);
             // 
             // btnSuaPhong
             // 
@@ -353,7 +354,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXoaPhong;
         private System.Windows.Forms.Button btnThuePhong;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnTraPhong;
         private System.Windows.Forms.Button btnSuaPhong;
         private System.Windows.Forms.DataGridView dtgDSKhachThue;
         private System.Windows.Forms.Label label5;
