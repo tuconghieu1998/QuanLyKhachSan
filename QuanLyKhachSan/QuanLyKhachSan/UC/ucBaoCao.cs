@@ -36,34 +36,28 @@ namespace QuanLyKhachSan.UC
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            
+            GlobalVar.dateFrom = dateFrom.Value.ToString("yyyy-MM-dd");
+            GlobalVar.dateTo = dateTo.Value.ToString("yyyy-MM-dd");
+            UserControl uc = null;
             if (int.Parse(cmbThongKe.SelectedValue.ToString()) == 1)
             {
-                GlobalVar.dateFrom = dateFrom.Value.ToString("yyyy-MM-dd HH:mm");
-                GlobalVar.dateTo = dateTo.Value.ToString("yyyy-MM-dd HH:mm");
-                panelBaoCaoContainer.Controls.Clear();
-                ucTKDT_TheoLoaiPhong uc = new ucTKDT_TheoLoaiPhong();
-                uc.Dock = DockStyle.Fill;
-                panelBaoCaoContainer.Controls.Add(uc);
+                //GlobalVar.dateFrom = dateFrom.Value.ToString("yyyy-MM-dd HH:mm");
+                //GlobalVar.dateTo = dateTo.Value.ToString("yyyy-MM-dd HH:mm");
+                
+                uc = new ucTKDT_TheoLoaiPhong();
+                
             }
             else if (int.Parse(cmbThongKe.SelectedValue.ToString()) == 2)
-            {
-                GlobalVar.dateFrom = dateFrom.Value.ToString("yyyy-MM-dd");
-                GlobalVar.dateTo = dateTo.Value.ToString("yyyy-MM-dd");
-                panelBaoCaoContainer.Controls.Clear();
-                ucThongKeLuotThueTheoNgay uc = new ucThongKeLuotThueTheoNgay();
-                uc.Dock = DockStyle.Fill;
-                panelBaoCaoContainer.Controls.Add(uc);
+            {            
+                uc = new ucThongKeLuotThueTheoNgay();
             }
             else if (int.Parse(cmbThongKe.SelectedValue.ToString()) == 3)
             {
-                GlobalVar.dateFrom = dateFrom.Value.ToString("yyyy-MM-dd");
-                GlobalVar.dateTo = dateTo.Value.ToString("yyyy-MM-dd");
-                panelBaoCaoContainer.Controls.Clear();
-                ucThongKeLuotThueTheoGio uc = new ucThongKeLuotThueTheoGio();
-                uc.Dock = DockStyle.Fill;
-                panelBaoCaoContainer.Controls.Add(uc);
+                uc = new ucThongKeLuotThueTheoGio();
             }
+            panelBaoCaoContainer.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            panelBaoCaoContainer.Controls.Add(uc);
         }
     }
 }

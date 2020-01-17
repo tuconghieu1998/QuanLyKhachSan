@@ -63,5 +63,10 @@ namespace QuanLyKhachSan.UC
             }
             dtgDSHoaDon.DataSource = HoaDonDAO.LayDSHoaDon(limit, offset);
         }
+
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

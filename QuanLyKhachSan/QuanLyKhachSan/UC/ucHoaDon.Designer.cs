@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucHoaDon));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDuyet = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.dtgChiTietHoaDon = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,14 +65,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSHoaDon)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnDuyet
             // 
-            this.button1.Location = new System.Drawing.Point(486, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Duyệt";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDuyet.Location = new System.Drawing.Point(486, 42);
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(75, 23);
+            this.btnDuyet.TabIndex = 5;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.UseVisualStyleBackColor = true;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // label2
             // 
@@ -83,12 +84,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Đến ngày";
             // 
-            // dateTimePicker2
+            // dateTo
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(254, 42);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 2;
+            this.dateTo.Location = new System.Drawing.Point(254, 42);
+            this.dateTo.Name = "dateTo";
+            this.dateTo.Size = new System.Drawing.Size(200, 20);
+            this.dateTo.TabIndex = 2;
             // 
             // label1
             // 
@@ -99,12 +100,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Từ ngày";
             // 
-            // dateTimePicker1
+            // dateFrom
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(17, 42);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dateFrom.Location = new System.Drawing.Point(17, 42);
+            this.dateFrom.Name = "dateFrom";
+            this.dateFrom.Size = new System.Drawing.Size(200, 20);
+            this.dateFrom.TabIndex = 0;
             // 
             // dtgChiTietHoaDon
             // 
@@ -201,11 +202,11 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnDuyet);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.dateTimePicker2);
+            this.panel2.Controls.Add(this.dateTo);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dateFrom);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -359,11 +360,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDuyet;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.DataGridView dtgChiTietHoaDon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
