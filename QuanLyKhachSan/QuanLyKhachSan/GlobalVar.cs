@@ -15,5 +15,7 @@ namespace QuanLyKhachSan
         //dùng để reload datagridview
         public static List<ChiTietHoaDon> tmp;
         public static float TongTien = 0;
+        public static string dateFrom;
+        public static string dateTo;
     }
 }

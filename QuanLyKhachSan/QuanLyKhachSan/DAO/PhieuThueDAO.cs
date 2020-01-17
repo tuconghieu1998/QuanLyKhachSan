@@ -39,8 +39,8 @@ namespace QuanLyKhachSan.DAO
         public static int LaySoNgayThuePhong(int idPhieuThue)
         {
             string query = string.Format("exec pro_getThoiGianThuePhong '{0}'", idPhieuThue);
-            DataTable dt =  DataProvider.Instance.ExcuteQuery(query);
-            if(dt.Rows.Count > 0)
+            DataTable dt = DataProvider.Instance.ExcuteQuery(query);
+            if (dt.Rows.Count > 0)
             {
                 DateTime ngayThue = (DateTime)dt.Rows[0]["NgayThue"];
                 DateTime ngayKetThuc = (DateTime)dt.Rows[0]["NgayKetThuc"];
@@ -62,7 +62,7 @@ namespace QuanLyKhachSan.DAO
         {
             string query = string.Format("exec pro_LayPhuThuLoaiKhachCaoNhatTheoPhieuThue '{0}'", idPhieuThue);
             DataTable dt = DataProvider.Instance.ExcuteQuery(query);
-            if(dt.Rows.Count <= 0)
+            if (dt.Rows.Count <= 0)
             {
                 return -1;
             }
@@ -87,6 +87,58 @@ namespace QuanLyKhachSan.DAO
         {
             string query = string.Format("exec pro_setTinhTrangPhieuThue '{0}', '{1}'", idPhieuThue, tinhTrang);
             return DataProvider.Instance.ExcuteNonQuery(query);
+        }
+
+        public static DataTable LayDSPhieuThue(int limit, int offset)
+        {
+            string query = string.Format("exec pro_LayDanhSachPhieuThue '{0}', '{1}'", limit, offset);
+            return DataProvider.Instance.ExcuteQuery(query);
+
+        }
+
+        public static int LaySoLuongPhieuThue()
+        {
+            string query = string.Format("exec pro_LaySoLuongPhieuThue");
+            return DataProvider.Instance.ExcuteScalarInt(query);
+
+        }
+
+        public static DataTable LayChiTietPhieuThue(int idPhieuThue)
+        {
+            string query = string.Format("exec pro_LayChiTietPhieuThue '{0}'", idPhieuThue);
+            return DataProvider.Instance.ExcuteQuery(query);
+
+        }
+
+        public static DataTable DuyetDSPhieuThue(string dateFrom, string dateTo, int tinhTrang, int limit, int offset)
+        {
+            string query;
+            if (tinhTrang == 3)//Duyệt theo ngày thuê
+            {
+                query = string.Format("exec pro_DuyetPhieuThueTheoNgayBatDau '{0}', '{1}', '{2}', '{3}'", dateFrom, dateTo, limit, offset);
+            }
+            else//duyệt 2 tiêu chí ngày thuê và tình trạng phiếu thuê
+            {
+                query = string.Format("exec pro_DuyetPhieuThueTheoNgayBatDauVaTinhTrangThue '{0}', '{1}','{2}', '{3}', '{4}'", dateFrom, dateTo, tinhTrang, limit, offset);
+            }
+
+            return DataProvider.Instance.ExcuteQuery(query);
+            
+        }
+
+        public static int LaySoLuongPhieuThue(string dateFrom, string dateTo, int tinhTrang)
+        {
+            string query;
+            if (tinhTrang == 3)//Duyệt theo ngày thuê
+            {
+                query = string.Format("exec pro_LaySoLuongPhieuThueTheoNgayBatDau '{0}', '{1}'", dateFrom, dateTo);
+            }
+            else//duyệt 2 tiêu chí ngày thuê và tình trạng phiếu thuê
+            {
+                query = string.Format("exec pro_LaySoLuongPhieuThueTheoNgayBatDauVaTinhTrangThue '{0}', '{1}', '{2}'", dateFrom, dateTo, tinhTrang);
+            }
+            return DataProvider.Instance.ExcuteScalarInt(query);
+
         }
     }
 }

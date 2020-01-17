@@ -258,8 +258,9 @@ namespace QuanLyKhachSan.UC
                 PhieuThueDAO.CapNhapPhieuThueKhiTraPhong(idPhieuThue, ngayKetThuc);
 
                 MessageBox.Show("Trả phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
             }
+            LoadDSPhong();
+            DatLai();
         }
 
         void addListChiTietHDByIDPhieuThue(int idPhieuThue)
@@ -288,7 +289,7 @@ namespace QuanLyKhachSan.UC
             }
             else
             {
-                chiTiet.Tien = chiTiet.DonGia * chiTiet.SoNgay * duLieu.PhuThuLoaiPhong * duLieu.PhuThuLoaiKhach;
+                chiTiet.Tien = chiTiet.DonGia * chiTiet.SoNgay * duLieu.PhuThuLoaiKhach;
             }
             chiTiet.PhuThu = chiTiet.Tien - chiTiet.DonGia * chiTiet.SoNgay;
             //chiTiet.SoNgay = PhieuThueDAO.LaySoNgayThuePhong(idPhieuThue);

@@ -31,5 +31,17 @@ namespace QuanLyKhachSan.DAO
             return DataProvider.Instance.ExcuteScalarInt(query);
 
         }
+
+        public static DataTable DSLoaiKhach()
+        {
+            string query = string.Format("exec pro_DSLoaiKhach");
+            return DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        public static int updateLoaiKhach(int idLoaiKhach, string tenLoai, float phuThu)
+        {
+            string query = string.Format("exec pro_updateLoaiKhach '{0}', N'{1}', '{2}'", idLoaiKhach, tenLoai, phuThu);
+            return DataProvider.Instance.ExcuteNonQuery(query);
+        }
     }
 }

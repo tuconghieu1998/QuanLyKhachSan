@@ -1,6 +1,7 @@
 ﻿using QuanLyKhachSan.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,27 @@ namespace QuanLyKhachSan.DAO
         {
             string query = string.Format("exec pro_insertChiTietHoaDon '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}'", idHoaDon, stt, ct.MaPhieuThue, ct.SoNgay, ct.DonGia, ct.PhuThu, ct.Tien);
             return DataProvider.Instance.ExcuteNonQuery(query);
+        }
+
+        public static DataTable LayDSHoaDon(int limit, int offset)
+        {
+            string query = string.Format("exec pro_LayDanhSachHoaDon '{0}', '{1}'", limit, offset);
+            return DataProvider.Instance.ExcuteQuery(query);
+
+        }
+
+        public static int LaySoLuongHoaDon()
+        {
+            string query = string.Format("exec pro_LaySoLuongHoaDon");
+            return DataProvider.Instance.ExcuteScalarInt(query);
+
+        }
+
+        public static DataTable LayChiTietHoaDon(int idHoaDon)
+        {
+            string query = string.Format("exec pro_LayChiTietHoaDon '{0}'", idHoaDon);
+            return DataProvider.Instance.ExcuteQuery(query);
+
         }
     }
 }

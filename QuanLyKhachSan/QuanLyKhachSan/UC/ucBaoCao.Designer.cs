@@ -32,8 +32,8 @@
             this.btnThongKe = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerNgayKetThuc = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerNgayBatDau = new System.Windows.Forms.DateTimePicker();
+            this.dateTo = new System.Windows.Forms.DateTimePicker();
+            this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbThongKe = new System.Windows.Forms.ComboBox();
             this.panelBaoCaoContainer = new System.Windows.Forms.Panel();
@@ -47,8 +47,8 @@
             this.panel1.Controls.Add(this.btnThongKe);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dateTimePickerNgayKetThuc);
-            this.panel1.Controls.Add(this.dateTimePickerNgayBatDau);
+            this.panel1.Controls.Add(this.dateTo);
+            this.panel1.Controls.Add(this.dateFrom);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cmbThongKe);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -59,7 +59,7 @@
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Location = new System.Drawing.Point(703, 32);
+            this.btnThongKe.Location = new System.Drawing.Point(764, 32);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(75, 23);
             this.btnThongKe.TabIndex = 6;
@@ -70,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(476, 14);
+            this.label3.Location = new System.Drawing.Point(537, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 5;
@@ -79,25 +79,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(255, 15);
+            this.label2.Location = new System.Drawing.Point(316, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Từ ngày";
             // 
-            // dateTimePickerNgayKetThuc
+            // dateTo
             // 
-            this.dateTimePickerNgayKetThuc.Location = new System.Drawing.Point(476, 35);
-            this.dateTimePickerNgayKetThuc.Name = "dateTimePickerNgayKetThuc";
-            this.dateTimePickerNgayKetThuc.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerNgayKetThuc.TabIndex = 3;
+            this.dateTo.Location = new System.Drawing.Point(537, 35);
+            this.dateTo.Name = "dateTo";
+            this.dateTo.Size = new System.Drawing.Size(200, 20);
+            this.dateTo.TabIndex = 3;
             // 
-            // dateTimePickerNgayBatDau
+            // dateFrom
             // 
-            this.dateTimePickerNgayBatDau.Location = new System.Drawing.Point(255, 35);
-            this.dateTimePickerNgayBatDau.Name = "dateTimePickerNgayBatDau";
-            this.dateTimePickerNgayBatDau.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerNgayBatDau.TabIndex = 2;
+            this.dateFrom.Location = new System.Drawing.Point(316, 35);
+            this.dateFrom.Name = "dateFrom";
+            this.dateFrom.Size = new System.Drawing.Size(200, 20);
+            this.dateFrom.TabIndex = 2;
             // 
             // label1
             // 
@@ -113,11 +113,12 @@
             this.cmbThongKe.FormattingEnabled = true;
             this.cmbThongKe.Location = new System.Drawing.Point(22, 34);
             this.cmbThongKe.Name = "cmbThongKe";
-            this.cmbThongKe.Size = new System.Drawing.Size(181, 21);
+            this.cmbThongKe.Size = new System.Drawing.Size(246, 21);
             this.cmbThongKe.TabIndex = 0;
             // 
             // panelBaoCaoContainer
             // 
+            this.panelBaoCaoContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBaoCaoContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBaoCaoContainer.Location = new System.Drawing.Point(0, 78);
             this.panelBaoCaoContainer.Name = "panelBaoCaoContainer";
@@ -146,8 +147,8 @@
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePickerNgayKetThuc;
-        private System.Windows.Forms.DateTimePicker dateTimePickerNgayBatDau;
+        private System.Windows.Forms.DateTimePicker dateTo;
+        private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbThongKe;
         private System.Windows.Forms.Panel panelBaoCaoContainer;

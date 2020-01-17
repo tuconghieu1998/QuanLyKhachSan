@@ -29,17 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDatLai = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnKiemTra = new System.Windows.Forms.Button();
+            this.txtMaPhieuThue = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTinhTrang = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.dtgDSKhachThue = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNgayThue = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTenPhong = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDatLai = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnHoanTat = new System.Windows.Forms.Button();
             this.lblTongTien = new System.Windows.Forms.Label();
@@ -58,12 +64,6 @@
             this.txtTenKhachHang = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTinhTrang = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtMaPhieuThue = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDSKhachThue)).BeginInit();
@@ -85,20 +85,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(514, 550);
             this.panel1.TabIndex = 0;
-            // 
-            // btnDatLai
-            // 
-            this.btnDatLai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDatLai.BackColor = System.Drawing.Color.Orange;
-            this.btnDatLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatLai.ForeColor = System.Drawing.Color.White;
-            this.btnDatLai.Location = new System.Drawing.Point(163, 487);
-            this.btnDatLai.Name = "btnDatLai";
-            this.btnDatLai.Size = new System.Drawing.Size(117, 45);
-            this.btnDatLai.TabIndex = 26;
-            this.btnDatLai.Text = "Đặt lại";
-            this.btnDatLai.UseVisualStyleBackColor = false;
-            this.btnDatLai.Click += new System.EventHandler(this.btnDatLai_Click);
             // 
             // btnThem
             // 
@@ -122,6 +108,14 @@
             this.btnKiemTra.UseVisualStyleBackColor = true;
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
             // 
+            // txtMaPhieuThue
+            // 
+            this.txtMaPhieuThue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaPhieuThue.Location = new System.Drawing.Point(53, 49);
+            this.txtMaPhieuThue.Name = "txtMaPhieuThue";
+            this.txtMaPhieuThue.Size = new System.Drawing.Size(230, 22);
+            this.txtMaPhieuThue.TabIndex = 23;
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -142,6 +136,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiếu thuê";
             // 
+            // txtTinhTrang
+            // 
+            this.txtTinhTrang.Location = new System.Drawing.Point(99, 366);
+            this.txtTinhTrang.Name = "txtTinhTrang";
+            this.txtTinhTrang.ReadOnly = true;
+            this.txtTinhTrang.Size = new System.Drawing.Size(275, 22);
+            this.txtTinhTrang.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(20, 366);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Tình trạng";
+            // 
             // dtgDSKhachThue
             // 
             this.dtgDSKhachThue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -157,6 +168,28 @@
             this.dtgDSKhachThue.Name = "dtgDSKhachThue";
             this.dtgDSKhachThue.Size = new System.Drawing.Size(405, 182);
             this.dtgDSKhachThue.TabIndex = 7;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "STT";
+            this.id.FillWeight = 40.60914F;
+            this.id.HeaderText = "STT";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.DataPropertyName = "TenKhachHang";
+            this.CustomerName.FillWeight = 159.3909F;
+            this.CustomerName.HeaderText = "Tên khách hàng";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TenLoai";
+            this.Column1.HeaderText = "Loại khách";
+            this.Column1.Name = "Column1";
             // 
             // label5
             // 
@@ -210,6 +243,20 @@
             this.label2.Size = new System.Drawing.Size(127, 16);
             this.label2.TabIndex = 21;
             this.label2.Text = "Nhập mã phiếu thuê";
+            // 
+            // btnDatLai
+            // 
+            this.btnDatLai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDatLai.BackColor = System.Drawing.Color.Orange;
+            this.btnDatLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatLai.ForeColor = System.Drawing.Color.White;
+            this.btnDatLai.Location = new System.Drawing.Point(163, 487);
+            this.btnDatLai.Name = "btnDatLai";
+            this.btnDatLai.Size = new System.Drawing.Size(117, 45);
+            this.btnDatLai.TabIndex = 26;
+            this.btnDatLai.Text = "Đặt lại";
+            this.btnDatLai.UseVisualStyleBackColor = false;
+            this.btnDatLai.Click += new System.EventHandler(this.btnDatLai_Click);
             // 
             // panel2
             // 
@@ -277,6 +324,7 @@
             // 
             // dtgDSPhieuThue
             // 
+            this.dtgDSPhieuThue.AllowUserToAddRows = false;
             this.dtgDSPhieuThue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgDSPhieuThue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -391,53 +439,6 @@
             this.label1.Size = new System.Drawing.Size(104, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên khách hàng";
-            // 
-            // txtTinhTrang
-            // 
-            this.txtTinhTrang.Location = new System.Drawing.Point(99, 366);
-            this.txtTinhTrang.Name = "txtTinhTrang";
-            this.txtTinhTrang.ReadOnly = true;
-            this.txtTinhTrang.Size = new System.Drawing.Size(275, 22);
-            this.txtTinhTrang.TabIndex = 9;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(20, 366);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Tình trạng";
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "STT";
-            this.id.FillWeight = 40.60914F;
-            this.id.HeaderText = "STT";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.DataPropertyName = "TenKhachHang";
-            this.CustomerName.FillWeight = 159.3909F;
-            this.CustomerName.HeaderText = "Tên khách hàng";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "TenLoai";
-            this.Column1.HeaderText = "Loại khách";
-            this.Column1.Name = "Column1";
-            // 
-            // txtMaPhieuThue
-            // 
-            this.txtMaPhieuThue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaPhieuThue.Location = new System.Drawing.Point(53, 49);
-            this.txtMaPhieuThue.Name = "txtMaPhieuThue";
-            this.txtMaPhieuThue.Size = new System.Drawing.Size(230, 22);
-            this.txtMaPhieuThue.TabIndex = 23;
             // 
             // ucThanhToan
             // 

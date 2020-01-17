@@ -35,11 +35,11 @@ namespace QuanLyKhachSan.DAO
         {
             List<Phong> list = new List<Phong>();
             string query;
-            if(loaiPhong == 0 && tinhTrang == 2)//Tất cả phòng
+            if (loaiPhong == 0 && tinhTrang == 2)//Tất cả phòng
             {
                 query = string.Format("exec pro_LoadDSPhong");
             }
-            else if(loaiPhong == 0)//chỉ duyệt theo tình trạng phòng
+            else if (loaiPhong == 0)//chỉ duyệt theo tình trạng phòng
             {
                 query = string.Format("exec pro_DuyetDSPhongTheoTinhTrang '{0}'", tinhTrang);
             }
@@ -51,7 +51,7 @@ namespace QuanLyKhachSan.DAO
             {
                 query = string.Format("exec pro_DuyetDSPhong '{0}', '{1}'", loaiPhong, tinhTrang);
             }
-            
+
             DataTable dt = DataProvider.Instance.ExcuteQuery(query);
             foreach (DataRow item in dt.Rows)
             {
@@ -121,7 +121,7 @@ namespace QuanLyKhachSan.DAO
 
         public static bool kiemTraTrungTenPhongKhiCapNhap(int id, string tenPhong)
         {
-            string query = string.Format("exec pro_kiemTraTrungTenPhongKhiCapNhap '{0}', N'{1}'",id,  tenPhong);
+            string query = string.Format("exec pro_kiemTraTrungTenPhongKhiCapNhap '{0}', N'{1}'", id, tenPhong);
             if (DataProvider.Instance.ExcuteScalarInt(query) >= 1)
                 return true;
             return false;
@@ -129,7 +129,7 @@ namespace QuanLyKhachSan.DAO
 
         public static int SuaPhong(int id, string tenPhong, int loaiPhong, string ghiChu)
         {
-            string query = string.Format("exec pro_SuaPhong '{0}', N'{1}', '{2}', N'{3}'",id, tenPhong, loaiPhong, ghiChu);
+            string query = string.Format("exec pro_SuaPhong '{0}', N'{1}', '{2}', N'{3}'", id, tenPhong, loaiPhong, ghiChu);
             return DataProvider.Instance.ExcuteNonQuery(query);
         }
 
@@ -143,7 +143,7 @@ namespace QuanLyKhachSan.DAO
         {
             string query = string.Format("exec pro_getTenLoaiPhong '{0}'", id);
             return DataProvider.Instance.ExcuteScalarString(query);
-            
+
         }
 
         public static int setTinhTrangPhong(int idPhong, int tinhTrang)
@@ -156,6 +156,18 @@ namespace QuanLyKhachSan.DAO
         {
             string query = string.Format("exec pro_getSLKhachToiDa '{0}'", idPhong);
             return DataProvider.Instance.ExcuteScalarInt(query);
+        }
+
+        public static DataTable DSLoaiPhong()
+        {
+            string query = string.Format("exec pro_DSLoaiPhong");
+            return DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        public static int updateLoaiPhong(int idLoaiPhong, string tenLoai, int SL_KhachBinhThuong, int SL_KhachToiDa, float DonGia, float phuThu)
+        {
+            string query = string.Format("exec pro_updateLoaiPhong '{0}',N'{1}', '{2}', '{3}', '{4}', '{5}'", idLoaiPhong, tenLoai, SL_KhachBinhThuong, SL_KhachToiDa, DonGia, phuThu);
+            return DataProvider.Instance.ExcuteNonQuery(query);
         }
     }
 }
